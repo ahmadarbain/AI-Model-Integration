@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemma Chat - AI Assistant</title>
+  <link rel="stylesheet" href="../static/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="main-container">
+    <div class="chat-panel">
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div class="ai-avatar">
+          <div class="avatar-circle">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="status-dot"></div>
+        </div>
+        <div class="header-info">
+          <h1 class="chat-title">Gemma Chat</h1>
+          <p class="chat-subtitle">
+            <i class="fas fa-comments"></i> Asisten AI pribadi Anda
+          </p>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="chat-messages" id="chatMessages">
+        <div class="welcome-message">
+          <div class="welcome-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h2 class="welcome-title">Selamat datang!</h2>
+          <p class="welcome-text">Mulai percakapan dengan mengetik pesan di bawah.</p>
+          <div class="suggestion-buttons">
+            <button class="suggestion-btn" onclick="setSuggestion('Halo!')">Halo!</button>
+            <button class="suggestion-btn" onclick="setSuggestion('Apa kabar?')">Apa kabar?</button>
+            <button class="suggestion-btn" onclick="setSuggestion('Bantuan coding')">Bantuan coding</button>
+            <button class="suggestion-btn" onclick="setSuggestion('Jelaskan AI')">Jelaskan AI</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="typingIndicator" class="typing-indicator hidden">
+        <div class="typing-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="typing-bubble">
+          <div class="typing-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="chat-input">
+        <form id="chatForm" class="input-form">
+          <div class="input-container">
+            <textarea 
+              id="messageInput" 
+              class="message-input" 
+              placeholder="Ketik pesan..." 
+              rows="1"
+            ></textarea>
+          </div>
+          <button id="sendButton" type="submit" class="send-button">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Panel - Information -->
+    <div class="info-panel">
+      <!-- Welcome Card -->
+      <div class="info-card">
+        <div class="card-header">
+          <div class="feature-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h2 class="card-title">AI Assistant Terdepan</h2>
+          <p class="card-description">
+            Gemma Chat menggunakan teknologi AI terbaru untuk memberikan pengalaman percakapan yang natural dan membantu.
+          </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-item">
+            <i class="fas fa-users"></i>
+            <div class="stat-value">10K+</div>
+            <div class="stat-label">Pengguna Aktif</div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-comments"></i>
+            <div class="stat-value">1M+</div>
+            <div class="stat-label">Pesan Diproses</div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-star"></i>
+            <div class="stat-value">99%</div>
+            <div class="stat-label">Tingkat Akurasi</div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-clock"></i>
+            <div class="stat-value">&lt;1s</div>
+            <div class="stat-label">Waktu Respon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Card -->
+      <div class="info-card">
+        <h3 class="section-title">
+          <i class="fas fa-bolt"></i> Fitur Unggulan
+        </h3>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon-small">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title">AI Cerdas</h4>
+              <p class="feature-desc">Ditenagai teknologi AI terdepan untuk jawaban akurat dan relevan</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-small">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title">Respon Cepat</h4>
+              <p class="feature-desc">Jawaban instan dalam hitungan detik</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-small">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title">Aman & Privat</h4>
+              <p class="feature-desc">Percakapan terenkripsi end-to-end</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-small">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title">Multibahasa</h4>
+              <p class="feature-desc">Mendukung berbagai bahasa termasuk Bahasa Indonesia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tips Card -->
+      <div class="info-card">
+        <h3 class="section-title">
+          <i class="fas fa-lightbulb"></i> Tips Penggunaan
+        </h3>
+        <div class="tips-list">
+          <div class="tip-item">
+            <div class="tip-number">1</div>
+            <p class="tip-text">Gunakan bahasa yang jelas dan spesifik</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">2</div>
+            <p class="tip-text">Berikan konteks yang cukup untuk pertanyaan kompleks</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">3</div>
+            <p class="tip-text">Jangan ragu untuk meminta penjelasan lebih detail</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">4</div>
+            <p class="tip-text">Manfaatkan fitur multi-turn conversation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../static/script.js"></script>
+</body>
+</html>

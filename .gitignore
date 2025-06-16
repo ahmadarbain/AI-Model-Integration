@@ -1,0 +1,73 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.python-version
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Data / model outputs
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.pt
+*.ckpt
+*.onnx
+*.tflite
+*.log
+*.csv
+*.tsv
+*.parquet
+*.db
+*.sqlite
+*.npz
+*.npy
+
+# Cache
+*.cache
+*.log
+.cache/
+logs/
+wandb/
+
+# Environment files
+.env
+*.env
+*.secret
+credentials.json
+token.json
+
+# IDE and OS files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.bak
+
+# Testing / coverage
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+pytest_cache/
+nosetests.xml
+test-results/
+
+# MyPy & Pyre
+.mypy_cache/
+.pyre/
+
+# Build / distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
